@@ -8,7 +8,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for reporting a Blink issue. Please include enough detail to reproduce the problem and confirm whether it affects sleeping, processor behavior, or config handling.
+        Thanks for reporting a Nightshift issue. Please include enough detail to reproduce the problem and confirm whether it affects sleeping, processor behavior, or config handling.
 
   - type: dropdown
     id: issue_type
@@ -17,7 +17,7 @@ body:
       description: Pick the closest category.
       options:
         - Crash
-        - Sleep skip did not trigger Blink
+        - Sleep skip did not trigger Nightshift
         - Furnace behavior
         - Campfire behavior
         - Crop behavior
@@ -31,9 +31,9 @@ body:
       required: true
 
   - type: input
-    id: blink_version
+    id: nightshift_version
     attributes:
-      label: Blink Version
+      label: Nightshift Version
       placeholder: "Example: 0.0.1-alpha"
     validations:
       required: true
@@ -81,7 +81,7 @@ body:
     attributes:
       label: Steps to Reproduce
       placeholder: |
-        1. Set Blink config values or leave defaults.
+        1. Set Nightshift config values or leave defaults.
         2. Sleep through the night.
         3. Check furnaces, campfires, or crops.
         4. Observe the result.
@@ -100,7 +100,7 @@ body:
     id: config
     attributes:
       label: Relevant Config
-      description: Paste the Blink config values if they matter for the issue.
+      description: Paste the Nightshift config values if they matter for the issue.
       render: toml
 
   - type: textarea
@@ -121,7 +121,7 @@ body:
     attributes:
       label: Confirmation
       options:
-        - label: I tested this on the latest available Blink version.
+        - label: I tested this on the latest available Nightshift version.
           required: true
         - label: I checked existing issues before opening this report.
           required: true

@@ -8,8 +8,7 @@ Nightshift is a small Forge mod for 1.20.1 that lets a few basic survival system
 - smokers and blast furnaces can move forward too
 - campfires keep cooking
 - crops can get partial growth ticks
-- animal breeding cooldowns can recover a little
-- sleep acceleration values are configurable
+- sleep processing values are configurable
 
 That scope is narrow on purpose.
 
@@ -48,15 +47,11 @@ Nightshift does not try to process every possible block or world mechanic during
 
 It only pushes a limited set of systems forward, and only partway. If something does not participate in the sleep pass, it may simply do nothing. If a server runs giant crop setups, those worlds probably need lower values than a smaller co-op world.
 
-## Roadmap, probably
+## Migration Note
 
-- better multiplayer balancing
-- optional dimension restrictions
-- more configurable utility categories
-- better compatibility handling for modded processing blocks
-- maybe NeoForge later
-
-Nothing much bigger than that is planned from the notes.
+The mod was previously developed under the working name Blink.
+Nightshift is the public release name going forward.
+Existing worlds or configs may need old config files renamed or regenerated because the mod ID changed from `blink` to `nightshift`.
 
 ## License
 

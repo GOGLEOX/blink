@@ -97,6 +97,8 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 jar {
+    archiveFileName = "${mod_id}-${minecraft_version}-forge-v${mod_version}.jar"
+
     manifest {
         attributes([
             'Specification-Title'     : mod_id,

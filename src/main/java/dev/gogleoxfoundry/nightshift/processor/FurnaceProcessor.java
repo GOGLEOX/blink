@@ -1,8 +1,8 @@
-package dev.gogleoxfoundry.blink.processor;
+package dev.gogleoxfoundry.nightshift.processor;
 
-import dev.gogleoxfoundry.blink.config.BlinkConfig;
-import dev.gogleoxfoundry.blink.util.AdvancementContext;
-import dev.gogleoxfoundry.blink.util.LoadedChunkScanner;
+import dev.gogleoxfoundry.nightshift.config.NightshiftConfig;
+import dev.gogleoxfoundry.nightshift.util.AdvancementContext;
+import dev.gogleoxfoundry.nightshift.util.LoadedChunkScanner;
 import java.util.List;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
 
-public final class FurnaceProcessor implements BlinkProcessor {
+public final class FurnaceProcessor implements NightshiftProcessor {
     private static final String ID = "furnace";
 
     @Override
@@ -20,12 +20,12 @@ public final class FurnaceProcessor implements BlinkProcessor {
 
     @Override
     public ProcessorResult process(AdvancementContext context) {
-        if (!BlinkConfig.ENABLE_FURNACES.get()) {
+        if (!NightshiftConfig.ENABLE_FURNACES.get()) {
             return ProcessorResult.none(ID);
         }
 
-        int maxFurnaces = BlinkConfig.maxFurnaceOperations();
-        int bonusTicks = BlinkConfig.furnaceBonusTicks();
+        int maxFurnaces = NightshiftConfig.maxFurnaceOperations();
+        int bonusTicks = NightshiftConfig.furnaceBonusTicks();
         if (maxFurnaces <= 0 || bonusTicks <= 0 || context.sleeperPositions().isEmpty()) {
             return ProcessorResult.none(ID);
         }

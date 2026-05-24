@@ -1,5 +1,5 @@
 name: Question
-description: Ask a setup, config, compatibility, or behavior question about Blink.
+description: Ask a setup, config, compatibility, or behavior question about Nightshift.
 title: "[Question]: "
 labels: ["question", "triage"]
 assignees: []
@@ -8,7 +8,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Use this form for questions about how Blink works, how to configure it, or whether a certain setup is expected to behave a certain way.
+        Use this form for questions about how Nightshift works, how to configure it, or whether a certain setup is expected to behave a certain way.
 
   - type: dropdown
     id: question_type
@@ -30,9 +30,9 @@ body:
       required: true
 
   - type: input
-    id: blink_version
+    id: nightshift_version
     attributes:
-      label: Blink Version
+      label: Nightshift Version
       placeholder: "Example: 0.0.1-alpha"
     validations:
       required: true

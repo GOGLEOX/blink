@@ -1,8 +1,8 @@
-package dev.gogleoxfoundry.blink.processor;
+package dev.gogleoxfoundry.nightshift.processor;
 
-import dev.gogleoxfoundry.blink.config.BlinkConfig;
-import dev.gogleoxfoundry.blink.util.AdvancementContext;
-import dev.gogleoxfoundry.blink.util.LoadedChunkScanner;
+import dev.gogleoxfoundry.nightshift.config.NightshiftConfig;
+import dev.gogleoxfoundry.nightshift.util.AdvancementContext;
+import dev.gogleoxfoundry.nightshift.util.LoadedChunkScanner;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.level.levelgen.Heightmap;
 
-public final class CropProcessor implements BlinkProcessor {
+public final class CropProcessor implements NightshiftProcessor {
     private static final String ID = "crop";
 
     @Override
@@ -27,12 +27,12 @@ public final class CropProcessor implements BlinkProcessor {
 
     @Override
     public ProcessorResult process(AdvancementContext context) {
-        if (!BlinkConfig.ENABLE_CROPS.get()) {
+        if (!NightshiftConfig.ENABLE_CROPS.get()) {
             return ProcessorResult.none(ID);
         }
 
-        int maxCrops = BlinkConfig.maxCropOperations();
-        int growthAttempts = BlinkConfig.cropGrowthAttempts();
+        int maxCrops = NightshiftConfig.maxCropOperations();
+        int growthAttempts = NightshiftConfig.cropGrowthAttempts();
         if (maxCrops <= 0 || growthAttempts <= 0 || context.sleeperPositions().isEmpty()) {
             return ProcessorResult.none(ID);
         }

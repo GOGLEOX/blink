@@ -1,4 +1,4 @@
-package dev.gogleoxfoundry.blink.util;
+package dev.gogleoxfoundry.nightshift.util;
 
 import java.util.List;
 import net.minecraft.core.BlockPos;

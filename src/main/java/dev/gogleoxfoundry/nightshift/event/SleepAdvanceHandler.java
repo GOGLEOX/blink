@@ -1,12 +1,12 @@
-package dev.gogleoxfoundry.blink.event;
+package dev.gogleoxfoundry.nightshift.event;
 
-import dev.gogleoxfoundry.blink.config.BlinkConfig;
-import dev.gogleoxfoundry.blink.processor.BlinkProcessor;
-import dev.gogleoxfoundry.blink.processor.BlinkProcessorRegistry;
-import dev.gogleoxfoundry.blink.processor.ProcessorResult;
-import dev.gogleoxfoundry.blink.util.AdvancementContext;
-import dev.gogleoxfoundry.blink.util.BlinkLog;
-import dev.gogleoxfoundry.blink.util.PerformanceBudget;
+import dev.gogleoxfoundry.nightshift.config.NightshiftConfig;
+import dev.gogleoxfoundry.nightshift.processor.NightshiftProcessor;
+import dev.gogleoxfoundry.nightshift.processor.NightshiftProcessorRegistry;
+import dev.gogleoxfoundry.nightshift.processor.ProcessorResult;
+import dev.gogleoxfoundry.nightshift.util.AdvancementContext;
+import dev.gogleoxfoundry.nightshift.util.NightshiftLog;
+import dev.gogleoxfoundry.nightshift.util.PerformanceBudget;
 import java.util.ArrayList;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -24,10 +24,10 @@ public final class SleepAdvanceHandler {
         if (!(event.getLevel() instanceof ServerLevel level)) {
             return;
         }
-        if (!BlinkConfig.ENABLE_BLINK.get()) {
+        if (!NightshiftConfig.ENABLE_NIGHTSHIFT.get()) {
             return;
         }
-        if (BlinkConfig.maxTotalOperationsPerSleep() <= 0) {
+        if (NightshiftConfig.maxTotalOperationsPerSleep() <= 0) {
             return;
         }
 
@@ -42,17 +42,17 @@ public final class SleepAdvanceHandler {
         }
 
         long skippedTime = Math.max(0L, event.getNewTime() - level.getDayTime());
-        boolean debugLogging = BlinkConfig.DEBUG_LOGGING.get();
+        boolean debugLogging = NightshiftConfig.DEBUG_LOGGING.get();
         AdvancementContext context = new AdvancementContext(
             level,
             sleeperPositions,
             skippedTime,
             RandomSource.create(level.getSeed() ^ event.getNewTime()),
-            BlinkConfig.processingRadius(),
-            new PerformanceBudget(BlinkConfig.maxTotalOperationsPerSleep())
+            NightshiftConfig.processingRadius(),
+            new PerformanceBudget(NightshiftConfig.maxTotalOperationsPerSleep())
         );
 
-        for (BlinkProcessor processor : BlinkProcessorRegistry.all()) {
+        for (NightshiftProcessor processor : NightshiftProcessorRegistry.all()) {
             if (context.budget().exhausted()) {
                 break;
             }
@@ -60,12 +60,12 @@ public final class SleepAdvanceHandler {
             try {
                 ProcessorResult result = processor.process(context);
                 if (result == null) {
-                    BlinkLog.LOGGER.error("Blink processor {} returned null result", processor.id());
+                    NightshiftLog.LOGGER.error("Nightshift processor {} returned null result", processor.id());
                     continue;
                 }
                 if (debugLogging) {
-                    BlinkLog.LOGGER.debug(
-                        "Blink processor {} completed with reported={} budgetUsed={} budgetRemaining={}",
+                    NightshiftLog.LOGGER.debug(
+                        "Nightshift processor {} completed with reported={} budgetUsed={} budgetRemaining={}",
                         result.processorId(),
                         result.operationsUsed(),
                         context.budget().operationsUsed(),
@@ -73,7 +73,7 @@ public final class SleepAdvanceHandler {
                     );
                 }
             } catch (Throwable throwable) {
-                BlinkLog.LOGGER.error("Blink processor {} failed", processor.id(), throwable);
+                NightshiftLog.LOGGER.error("Nightshift processor {} failed", processor.id(), throwable);
             }
         }
     }

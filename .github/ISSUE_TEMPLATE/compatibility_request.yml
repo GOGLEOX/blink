@@ -8,7 +8,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Use this form to request compatibility work for Blink. Good requests explain what should work together, why it matters, and what behavior is expected after sleep.
+        Use this form to request compatibility work for Nightshift. Good requests explain what should work together, why it matters, and what behavior is expected after sleep.
 
   - type: dropdown
     id: compatibility_type
@@ -65,7 +65,7 @@ body:
     id: expected_behavior
     attributes:
       label: Expected Behavior
-      description: What should Blink do once this compatibility exists?
+      description: What should Nightshift do once this compatibility exists?
       placeholder: "Example: respect another mod's cooking block, load cleanly on another loader, or integrate cleanly with config editing."
     validations:
       required: true
@@ -81,7 +81,7 @@ body:
     attributes:
       label: Scope Check
       options:
-        - label: This request is specifically about Blink compatibility.
+        - label: This request is specifically about Nightshift compatibility.
           required: true
         - label: I understand support depends on API access, maintenance cost, and project scope.
           required: true

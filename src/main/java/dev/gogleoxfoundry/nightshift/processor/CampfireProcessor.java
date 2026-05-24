@@ -1,8 +1,8 @@
-package dev.gogleoxfoundry.blink.processor;
+package dev.gogleoxfoundry.nightshift.processor;
 
-import dev.gogleoxfoundry.blink.config.BlinkConfig;
-import dev.gogleoxfoundry.blink.util.AdvancementContext;
-import dev.gogleoxfoundry.blink.util.LoadedChunkScanner;
+import dev.gogleoxfoundry.nightshift.config.NightshiftConfig;
+import dev.gogleoxfoundry.nightshift.util.AdvancementContext;
+import dev.gogleoxfoundry.nightshift.util.LoadedChunkScanner;
 import java.util.List;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.entity.CampfireBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
 
-public final class CampfireProcessor implements BlinkProcessor {
+public final class CampfireProcessor implements NightshiftProcessor {
     private static final String ID = "campfire";
 
     @Override
@@ -22,12 +22,12 @@ public final class CampfireProcessor implements BlinkProcessor {
 
     @Override
     public ProcessorResult process(AdvancementContext context) {
-        if (!BlinkConfig.ENABLE_CAMPFIRES.get()) {
+        if (!NightshiftConfig.ENABLE_CAMPFIRES.get()) {
             return ProcessorResult.none(ID);
         }
 
-        int maxCampfires = BlinkConfig.maxCampfireOperations();
-        int bonusTicks = BlinkConfig.campfireBonusTicks();
+        int maxCampfires = NightshiftConfig.maxCampfireOperations();
+        int bonusTicks = NightshiftConfig.campfireBonusTicks();
         if (maxCampfires <= 0 || bonusTicks <= 0 || context.sleeperPositions().isEmpty()) {
             return ProcessorResult.none(ID);
         }

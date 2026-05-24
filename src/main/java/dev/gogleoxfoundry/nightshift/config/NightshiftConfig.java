@@ -1,18 +1,18 @@
-package dev.gogleoxfoundry.blink.config;
+package dev.gogleoxfoundry.nightshift.config;
 
-import dev.gogleoxfoundry.blink.Blink;
-import dev.gogleoxfoundry.blink.util.BlinkLog;
+import dev.gogleoxfoundry.nightshift.Nightshift;
+import dev.gogleoxfoundry.nightshift.util.NightshiftLog;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
 
-@Mod.EventBusSubscriber(modid = Blink.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public final class BlinkConfig {
+@Mod.EventBusSubscriber(modid = Nightshift.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
+public final class NightshiftConfig {
     public static final ForgeConfigSpec SPEC;
 
-    public static final ForgeConfigSpec.BooleanValue ENABLE_BLINK;
+    public static final ForgeConfigSpec.BooleanValue ENABLE_NIGHTSHIFT;
     public static final ForgeConfigSpec.IntValue PROCESSING_RADIUS;
     public static final ForgeConfigSpec.IntValue MAX_TOTAL_OPERATIONS_PER_SLEEP;
     public static final ForgeConfigSpec.BooleanValue ENABLE_FURNACES;
@@ -29,14 +29,14 @@ public final class BlinkConfig {
     static {
         ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
 
-        ENABLE_BLINK = builder
-            .comment("Enables Blink sleep processing.")
-            .define("enableBlink", true);
+        ENABLE_NIGHTSHIFT = builder
+            .comment("Enables Nightshift overnight processing.")
+            .define("enableNightshift", true);
         PROCESSING_RADIUS = builder
             .comment("Chunk radius around sleepers to consider.")
             .defineInRange("processingRadius", 2, 0, 8);
         MAX_TOTAL_OPERATIONS_PER_SLEEP = builder
-            .comment("Hard cap on all Blink operations per sleep.")
+            .comment("Hard cap on all Nightshift operations per sleep.")
             .defineInRange("maxTotalOperationsPerSleep", 128, 0, 4096);
         ENABLE_FURNACES = builder
             .comment("Allows furnace bonus progress.")
@@ -66,13 +66,13 @@ public final class BlinkConfig {
             .comment("Growth attempts per selected crop.")
             .defineInRange("cropGrowthAttempts", 1, 0, 16);
         DEBUG_LOGGING = builder
-            .comment("Enables Blink debug logging.")
+            .comment("Enables Nightshift debug logging.")
             .define("debugLogging", false);
 
         SPEC = builder.build();
     }
 
-    private BlinkConfig() {
+    private NightshiftConfig() {
     }
 
     public static int processingRadius() {
@@ -122,7 +122,6 @@ public final class BlinkConfig {
             return;
         }
 
-        // Read all live values through accessors so any clamped runtime use stays aligned.
         processingRadius();
         maxTotalOperationsPerSleep();
         maxFurnaceOperations();
@@ -133,10 +132,10 @@ public final class BlinkConfig {
         cropGrowthAttempts();
 
         if (DEBUG_LOGGING.get()) {
-            BlinkLog.LOGGER.debug(
-                "Blink config {}: enableBlink={}, radius={}, maxOps={}, furnaces={}({}/{}), campfires={}({}/{}), crops={}({}/{})",
+            NightshiftLog.LOGGER.debug(
+                "Nightshift config {}: enableNightshift={}, radius={}, maxOps={}, furnaces={}({}/{}), campfires={}({}/{}), crops={}({}/{})",
                 phase,
-                ENABLE_BLINK.get(),
+                ENABLE_NIGHTSHIFT.get(),
                 processingRadius(),
                 maxTotalOperationsPerSleep(),
                 ENABLE_FURNACES.get(),

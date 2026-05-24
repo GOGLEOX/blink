@@ -1,4 +1,4 @@
-package dev.gogleoxfoundry.blink.util;
+package dev.gogleoxfoundry.nightshift.util;
 
 public final class PerformanceBudget {
     private final int maxOperations;

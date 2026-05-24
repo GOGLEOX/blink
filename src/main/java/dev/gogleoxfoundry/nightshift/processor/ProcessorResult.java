@@ -1,4 +1,4 @@
-package dev.gogleoxfoundry.blink.processor;
+package dev.gogleoxfoundry.nightshift.processor;
 
 public record ProcessorResult(String processorId, int operationsUsed) {
     public ProcessorResult {
