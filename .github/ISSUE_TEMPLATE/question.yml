@@ -1,0 +1,86 @@
+name: Question
+description: Ask a setup, config, compatibility, or behavior question about Blink.
+title: "[Question]: "
+labels: ["question", "triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for questions about how Blink works, how to configure it, or whether a certain setup is expected to behave a certain way.
+
+  - type: dropdown
+    id: question_type
+    attributes:
+      label: Question Type
+      options:
+        - General usage
+        - Configuration
+        - Hot reload behavior
+        - Furnace behavior
+        - Campfire behavior
+        - Crop behavior
+        - Dedicated server setup
+        - Modpack setup
+        - Compatibility
+        - Performance
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: blink_version
+    attributes:
+      label: Blink Version
+      placeholder: "Example: 0.0.1-alpha"
+    validations:
+      required: true
+
+  - type: input
+    id: minecraft_version
+    attributes:
+      label: Minecraft Version
+      placeholder: "Example: 1.20.1"
+    validations:
+      required: true
+
+  - type: input
+    id: loader_version
+    attributes:
+      label: Loader Version
+      placeholder: "Example: Forge 47.4.10"
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your Question
+      description: Explain what you are trying to understand or do.
+      placeholder: "Describe the setup or behavior you want clarified."
+    validations:
+      required: true
+
+  - type: textarea
+    id: attempted
+    attributes:
+      label: What Have You Tried?
+      description: Optional. Include configs, troubleshooting steps, or observations.
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or Screenshots
+      description: Optional. Paste logs if they help explain the question.
+      render: text
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Confirmation
+      options:
+        - label: I checked existing issues before opening this question.
+          required: true
+        - label: I included enough detail for the question to be understood.
+          required: true

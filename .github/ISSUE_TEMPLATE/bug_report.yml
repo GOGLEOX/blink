@@ -1,0 +1,129 @@
+name: Bug Report
+description: Report a crash, config problem, sleep trigger issue, processor bug, or server/client behavior problem.
+title: "[Bug]: "
+labels: ["bug", "triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a Blink issue. Please include enough detail to reproduce the problem and confirm whether it affects sleeping, processor behavior, or config handling.
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: Issue Type
+      description: Pick the closest category.
+      options:
+        - Crash
+        - Sleep skip did not trigger Blink
+        - Furnace behavior
+        - Campfire behavior
+        - Crop behavior
+        - Config or hot reload issue
+        - Dedicated server issue
+        - Client-side display or mod list issue
+        - Performance issue
+        - Compatibility issue
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: blink_version
+    attributes:
+      label: Blink Version
+      placeholder: "Example: 0.0.1-alpha"
+    validations:
+      required: true
+
+  - type: input
+    id: minecraft_version
+    attributes:
+      label: Minecraft Version
+      placeholder: "Example: 1.20.1"
+    validations:
+      required: true
+
+  - type: input
+    id: loader_version
+    attributes:
+      label: Loader Version
+      placeholder: "Example: Forge 47.4.10"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      options:
+        - Singleplayer
+        - LAN world
+        - Dedicated server
+        - Modpack
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the issue clearly.
+      placeholder: "Explain what went wrong."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      placeholder: |
+        1. Set Blink config values or leave defaults.
+        2. Sleep through the night.
+        3. Check furnaces, campfires, or crops.
+        4. Observe the result.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      placeholder: "What should have happened instead?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: config
+    attributes:
+      label: Relevant Config
+      description: Paste the Blink config values if they matter for the issue.
+      render: toml
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or Crash Report
+      description: Paste relevant lines from latest.log, debug.log, or a crash report.
+      render: text
+
+  - type: textarea
+    id: mods
+    attributes:
+      label: Other Installed Mods
+      description: List other mods or link the modpack if applicable.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Confirmation
+      options:
+        - label: I tested this on the latest available Blink version.
+          required: true
+        - label: I checked existing issues before opening this report.
+          required: true
+        - label: I included logs or explained why logs are not available.
+          required: true

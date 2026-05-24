@@ -1,0 +1,89 @@
+name: Compatibility Request
+description: Request support for another mod, modpack, loader, or Minecraft version.
+title: "[Compatibility]: "
+labels: ["compatibility", "request", "triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form to request compatibility work for Blink. Good requests explain what should work together, why it matters, and what behavior is expected after sleep.
+
+  - type: dropdown
+    id: compatibility_type
+    attributes:
+      label: Compatibility Type
+      options:
+        - Mod compatibility
+        - Modpack compatibility
+        - Loader compatibility
+        - Minecraft version compatibility
+        - Server software compatibility
+        - Config tool integration
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: requested_target
+    attributes:
+      label: Requested Target
+      description: Name the mod, modpack, loader, version line, or platform.
+      placeholder: "Example: NeoForge 1.20.1, Farmer's Delight, Configured, a public modpack"
+    validations:
+      required: true
+
+  - type: input
+    id: requested_version
+    attributes:
+      label: Requested Version
+      placeholder: "Example: 1.20.1, 47.4.x, 5.0.x"
+
+  - type: dropdown
+    id: current_status
+    attributes:
+      label: Current Status
+      options:
+        - Not supported
+        - Partially works
+        - Works with issues
+        - Unknown
+    validations:
+      required: true
+
+  - type: textarea
+    id: use_case
+    attributes:
+      label: Use Case
+      description: Why does this compatibility matter?
+      placeholder: "Explain the practical reason this support would help players or servers."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: Expected Behavior
+      description: What should Blink do once this compatibility exists?
+      placeholder: "Example: respect another mod's cooking block, load cleanly on another loader, or integrate cleanly with config editing."
+    validations:
+      required: true
+
+  - type: textarea
+    id: links
+    attributes:
+      label: Relevant Links
+      description: Link the mod page, docs, repo, modpack page, or API docs if available.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Scope Check
+      options:
+        - label: This request is specifically about Blink compatibility.
+          required: true
+        - label: I understand support depends on API access, maintenance cost, and project scope.
+          required: true
+        - label: I checked existing issues before opening this request.
+          required: true
