@@ -61,7 +61,7 @@ MIT License
 
 - GitHub: https://github.com/GOGLEOX/nightshift
 - Website: https://gogleox.github.io/gxfoundry
-- CurseForge: [NOT UPLOADED YET]
+- CurseForge: https://curseforge.com/minecraft/mc-mods/nightshift
 - Modrinth: [NOT UPLOADED YET]
 
 ---
